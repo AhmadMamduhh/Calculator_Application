@@ -20,6 +20,22 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/historyText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingEnd="5dp"
+                tools:text="dummy text"
+                android:textAlignment="textEnd"
+                android:textColor="#AA3C3C3C"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/resultText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.523" />
+
+            <TextView
                 android:id="@+id/resultText"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -69,12 +85,13 @@
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/removeBtn"
                 android:layout_width="wrap_content"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_baseline_backspace_24"
-                android:backgroundTint="#CAC7C7"
+                android:src="@drawable/ic_baseline_backspace_24"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 

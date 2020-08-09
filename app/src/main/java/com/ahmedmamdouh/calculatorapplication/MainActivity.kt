@@ -167,16 +167,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 "=" -> {
-                    if(firstNumber == null) {
+                    if (firstNumber == null) {
 
-                    }
-                    else {
+                    } else {
                         updateResults()
                         firstNumber = null
                     }
                 }
             }
-
 
 
         }
@@ -200,14 +198,42 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    // Handling the event that occurs when a clear button is clicked
+    object ClearClickedImplementer : View.OnClickListener {
 
-        // Handling the event that occurs when a clear button is clicked
-        object ClearClickedImplementer : View.OnClickListener {
+        /**
+         * This method is responsible for responding to click events by clear buttons
+         * It makes sure that the screen gets cleared appropriately.
+         * @param v : this is the button view which was clicked.
+         *
+         */
+        override fun onClick(v: View?) {
+            when (v!!.id) {
+                R.id.removeBtn ->
+                    if ((resultsTextView.text.toString().length == 1) and !operation)
+                        resultsTextView.text = "0"
+                    else if (!(resultsTextView.text.equals("0")) and !operation) {
+                        resultsTextView.text = resultsTextView.text.toString()
+                            .substring(0, resultsTextView.text.toString().length - 1)
+                    }
 
-
-            override fun onClick(v: View?) {
-
+                R.id.cBtn -> {
+                    operation = false
+                    firstNumber = null
+                    secondNumber = null
+                    cachedValue = 0
+                    operationCode = -1
+                    resultsTextView.text = "0"
+                }
+                
+                R.id.ceBtn -> {
+                    resultsTextView.text = "0"
+                    if (operation) operation = false
+                }
             }
 
         }
+
     }
+
+}

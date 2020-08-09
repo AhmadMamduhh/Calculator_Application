@@ -1,7 +1,5 @@
 package com.ahmedmamdouh.calculatorapplication
 
-import android.content.Context
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.cachedValue
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.firstNumber
+import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.historyTextView
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.operation
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.operationCode
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.resultsTextView
@@ -24,8 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // A global textview object which controls the results that display on the screen
+        // A global TextView object which controls the results that display on the screen
         resultsTextView = resultText
+
+        // A global TextView object which controls the history of the calculations
+        historyTextView = historyText
+
 
         // Setting click listeners for digit buttons
         oneBtn.setOnClickListener(NumberClickedImplementer)
@@ -59,6 +62,7 @@ class MainActivity : AppCompatActivity() {
     object ResultsController {
 
         lateinit var resultsTextView: TextView
+        lateinit var historyTextView: TextView
         var firstNumber: String? = null
         var secondNumber: String? = null
         var operation: Boolean = false
@@ -123,9 +127,11 @@ class MainActivity : AppCompatActivity() {
                 "+" -> {
                     if (firstNumber == null) {
                         firstNumber = resultsTextView.text.toString()
+                        historyTextView.text = "$firstNumber + "
                         operation = true
 
                     } else if (!operation) {
+                        historyTextView.text = "${historyTextView.text}${resultsTextView.text} + "
                         updateResults()
                         operation = true
                     }
@@ -136,8 +142,10 @@ class MainActivity : AppCompatActivity() {
                 "-" -> {
                     if (firstNumber == null) {
                         firstNumber = resultsTextView.text.toString()
+                        historyTextView.text = "$firstNumber - "
                         operation = true
                     } else if (!operation) {
+                        historyTextView.text = "${historyTextView.text}${resultsTextView.text} - "
                         updateResults()
                         operation = true
                     }
@@ -147,8 +155,10 @@ class MainActivity : AppCompatActivity() {
                 "x" -> {
                     if (firstNumber == null) {
                         firstNumber = resultsTextView.text.toString()
+                        historyTextView.text = "$firstNumber x "
                         operation = true
                     } else if (!operation) {
+                        historyTextView.text = "${historyTextView.text}${resultsTextView.text} x "
                         updateResults()
                         operation = true
                     }
@@ -158,8 +168,10 @@ class MainActivity : AppCompatActivity() {
                 "/" -> {
                     if (firstNumber == null) {
                         firstNumber = resultsTextView.text.toString()
+                        historyTextView.text = "$firstNumber / "
                         operation = true
                     } else if (!operation) {
+                        historyTextView.text = "${historyTextView.text}${resultsTextView.text} / "
                         updateResults()
                         operation = true
                     }
@@ -168,8 +180,9 @@ class MainActivity : AppCompatActivity() {
 
                 "=" -> {
                     if (firstNumber == null) {
-
+                        historyTextView.text = "${resultsTextView.text} = "
                     } else {
+                        historyTextView.text = "${historyTextView.text}${resultsTextView.text} = "
                         updateResults()
                         firstNumber = null
                     }
@@ -224,8 +237,9 @@ class MainActivity : AppCompatActivity() {
                     cachedValue = 0
                     operationCode = -1
                     resultsTextView.text = "0"
+                    historyTextView.text = ""
                 }
-                
+
                 R.id.ceBtn -> {
                     resultsTextView.text = "0"
                     if (operation) operation = false

@@ -14,14 +14,35 @@ import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.res
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.secondNumber
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.setResultsText
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.cBtn
+import kotlinx.android.synthetic.main.activity_main.ceBtn
+import kotlinx.android.synthetic.main.activity_main.decimalBtn
+import kotlinx.android.synthetic.main.activity_main.divisonBtn
+import kotlinx.android.synthetic.main.activity_main.eightBtn
+import kotlinx.android.synthetic.main.activity_main.equalsBtn
+import kotlinx.android.synthetic.main.activity_main.fiveBtn
+import kotlinx.android.synthetic.main.activity_main.fourBtn
+import kotlinx.android.synthetic.main.activity_main.historyText
+import kotlinx.android.synthetic.main.activity_main.minusBtn
+import kotlinx.android.synthetic.main.activity_main.nineBtn
+import kotlinx.android.synthetic.main.activity_main.oneBtn
+import kotlinx.android.synthetic.main.activity_main.plusBtn
+import kotlinx.android.synthetic.main.activity_main.posNegBtn
+import kotlinx.android.synthetic.main.activity_main.removeBtn
+import kotlinx.android.synthetic.main.activity_main.resultText
+import kotlinx.android.synthetic.main.activity_main.sevenBtn
+import kotlinx.android.synthetic.main.activity_main.sixBtn
+import kotlinx.android.synthetic.main.activity_main.threeBtn
+import kotlinx.android.synthetic.main.activity_main.timesBtn
+import kotlinx.android.synthetic.main.activity_main.twoBtn
+import kotlinx.android.synthetic.main.activity_main.zeroBtn
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var resultTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_dark)
 
         // A global TextView object which controls the results that display on the screen
         resultsTextView = resultText
@@ -249,5 +270,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 }

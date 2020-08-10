@@ -19,4 +19,7 @@
     <string name="zero">0</string>
     <string name="decimal">.</string>
     <string name="divide">/</string>
+    <string name="maximum_error_1">The maximum number of running operations limit has been reached!</string>
+    <string name="maximum_error_2">The maximum number of digits limit has been reached!</string>
+    <string name="division_by_zero_error">Cannot divide by zero!</string>
 </resources>

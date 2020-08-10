@@ -3,12 +3,12 @@ package com.ahmedmamdouh.calculatorapplication
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.MAX_NUMBER_SIZE
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.MAX_RUNNING_OPERATIONS
+import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.adjustTextView
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.cachedValue
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.context
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.divisionByZeroFlag
@@ -17,6 +17,7 @@ import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.his
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.operation
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.operationCode
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.resultsTextView
+import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.scrollView
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.secondNumber
 import com.ahmedmamdouh.calculatorapplication.MainActivity.ResultsController.setResultsText
 import kotlinx.android.synthetic.main.activity_main.*
@@ -42,6 +43,8 @@ import kotlinx.android.synthetic.main.activity_main.threeBtn
 import kotlinx.android.synthetic.main.activity_main.timesBtn
 import kotlinx.android.synthetic.main.activity_main.twoBtn
 import kotlinx.android.synthetic.main.activity_main.zeroBtn
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 
         // A global TextView object which controls the history of the calculations
         historyTextView = historyText
+
+        // The ScrollView which controls the scrolling of the history TextView
+        scrollView = historyScrollView
 
         // Passing the context to the ResultsController class
         context = this
@@ -94,18 +100,26 @@ class MainActivity : AppCompatActivity() {
         lateinit var resultsTextView: TextView
         lateinit var historyTextView: TextView
         lateinit var context: Context
+        lateinit var scrollView: HorizontalScrollView
         var firstNumber: String? = null
         var secondNumber: String? = null
         var operation: Boolean = false
-        var cachedValue: Int = 0
+        var cachedValue: Double = 0.0
         var divisionByZeroFlag = false
 
         // Important constants
-        const val MAX_RUNNING_OPERATIONS = 40
+        const val MAX_RUNNING_OPERATIONS = 100
         const val MAX_NUMBER_SIZE = 10
 
         // This variable identifies the operation used. 1 for +, 2 for -, 3 for times and 4 for divided by.
         var operationCode: Int = -1
+
+        /**
+         * This method adjusts the scrolling of the historyTextView whenever characters are appended to it
+         **/
+        fun adjustTextView() {
+            scrollView.post { scrollView.fullScroll(ScrollView.FOCUS_RIGHT) }
+        }
 
         fun setResultsText(results: String) {
 
@@ -129,9 +143,9 @@ class MainActivity : AppCompatActivity() {
         override fun onClick(v: View?) {
 
             // Checking if a division by zero has occurred
-            if(divisionByZeroFlag){
+            if (divisionByZeroFlag) {
                 resultsTextView.text = "0"
-                resultsTextView.textSize = 60f
+                resultsTextView.textSize = 50f
                 historyTextView.text = ""
                 divisionByZeroFlag = false
                 operation = true
@@ -188,7 +202,7 @@ class MainActivity : AppCompatActivity() {
             val buttonView = v as Button
             when (buttonView.text) {
                 "+" -> {
-                    if(divisionByZeroFlag)
+                    if (divisionByZeroFlag)
                         return
                     if (firstNumber == null) {
                         firstNumber = resultsTextView.text.toString()
@@ -197,6 +211,7 @@ class MainActivity : AppCompatActivity() {
 
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} + "
+                        adjustTextView()
                         updateResults()
                         operation = true
                     }
@@ -205,7 +220,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 "-" -> {
-                    if(divisionByZeroFlag)
+                    if (divisionByZeroFlag)
                         return
 
                     if (firstNumber == null) {
@@ -214,6 +229,7 @@ class MainActivity : AppCompatActivity() {
                         operation = true
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} - "
+                        adjustTextView()
                         updateResults()
                         operation = true
                     }
@@ -221,7 +237,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 "x" -> {
-                    if(divisionByZeroFlag)
+                    if (divisionByZeroFlag)
                         return
 
                     if (firstNumber == null) {
@@ -230,6 +246,7 @@ class MainActivity : AppCompatActivity() {
                         operation = true
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} x "
+                        adjustTextView()
                         updateResults()
                         operation = true
                     }
@@ -237,7 +254,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 "/" -> {
-                    if(divisionByZeroFlag)
+                    if (divisionByZeroFlag)
                         return
 
                     if (firstNumber == null) {
@@ -246,6 +263,7 @@ class MainActivity : AppCompatActivity() {
                         operation = true
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} / "
+                        adjustTextView()
                         updateResults()
                         operation = true
                     }
@@ -253,11 +271,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 "=" -> {
-                    if(divisionByZeroFlag) {
+                    if (divisionByZeroFlag) {
                         operation = false
                         firstNumber = null
                         secondNumber = null
-                        cachedValue = 0
+                        cachedValue = 0.0
                         operationCode = -1
                         resultsTextView.text = "0"
                         historyTextView.text = ""
@@ -269,13 +287,15 @@ class MainActivity : AppCompatActivity() {
                         historyTextView.text = "${resultsTextView.text} = "
                     } else {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} = "
+                        adjustTextView()
                         updateResults()
                         firstNumber = null
                     }
+                    operation = true
                 }
 
                 "+/-" -> {
-                    if(divisionByZeroFlag)
+                    if (divisionByZeroFlag)
                         return
 
                     if (resultsTextView.text.toString() == "0")
@@ -296,13 +316,13 @@ class MainActivity : AppCompatActivity() {
          */
         private fun updateResults() {
             secondNumber = resultsTextView.text.toString()
-            cachedValue = secondNumber!!.toInt()
+            cachedValue = secondNumber!!.toDouble()
             when (operationCode) {
-                1 -> cachedValue = firstNumber!!.toInt() + secondNumber!!.toInt()
-                2 -> cachedValue = firstNumber!!.toInt() - secondNumber!!.toInt()
-                3 -> cachedValue = firstNumber!!.toInt() * secondNumber!!.toInt()
+                1 -> cachedValue = firstNumber!!.toDouble() + secondNumber!!.toDouble()
+                2 -> cachedValue = firstNumber!!.toDouble() - secondNumber!!.toDouble()
+                3 -> cachedValue = firstNumber!!.toDouble() * secondNumber!!.toDouble()
                 4 -> {
-                    if(secondNumber!!.toInt() == 0) {
+                    if (secondNumber!!.toDouble() == 0.0) {
                         firstNumber = null
                         secondNumber = null
                         resultsTextView.text = context.getString(R.string.division_by_zero_error)
@@ -311,10 +331,13 @@ class MainActivity : AppCompatActivity() {
                         return
                     }
 
-                    cachedValue = firstNumber!!.toInt() / secondNumber!!.toInt()}
+                    cachedValue = firstNumber!!.toDouble() / secondNumber!!.toDouble()
+                }
             }
-            resultsTextView.text = "${cachedValue}"
-            firstNumber = "${cachedValue}"
+            val df = DecimalFormat("#.####")
+            df.roundingMode = RoundingMode.CEILING
+            resultsTextView.text = df.format(cachedValue)
+            firstNumber = "$cachedValue"
             secondNumber = null
         }
     }
@@ -346,17 +369,17 @@ class MainActivity : AppCompatActivity() {
                     operation = false
                     firstNumber = null
                     secondNumber = null
-                    cachedValue = 0
+                    cachedValue = 0.0
                     operationCode = -1
                     resultsTextView.text = "0"
                     historyTextView.text = ""
-                    if(divisionByZeroFlag) resultsTextView.textSize = 60f
+                    if (divisionByZeroFlag) resultsTextView.textSize = 60f
                 }
 
                 R.id.ceBtn -> {
                     resultsTextView.text = "0"
                     if (operation) operation = false
-                    if(divisionByZeroFlag) resultsTextView.textSize = 60f
+                    if (divisionByZeroFlag) resultsTextView.textSize = 60f
 
                 }
             }

@@ -21,6 +21,20 @@
             android:layout_height="match_parent"
             android:background="#000">
 
+            <Button
+                android:id="@+id/dayModeBtn"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_baseline_wb_sunny_24"
+                app:layout_constraintBottom_toTopOf="@+id/historyScrollView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.641"
+                android:onClick="goToDayMode"
+                tools:ignore="OnClick" />
+
             <HorizontalScrollView
                 android:id="@+id/historyScrollView"
                 android:layout_width="match_parent"
@@ -31,7 +45,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.723">
+                app:layout_constraintVertical_bias="0.653">
 
                 <TextView
                     android:id="@+id/historyText"
@@ -53,14 +67,14 @@
                 android:text="@string/zero"
                 android:textAlignment="textEnd"
                 android:textColor="#FFFFFF"
-                android:textSize="45sp"
+                android:textSize="42sp"
                 android:lines="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.728" />
+                app:layout_constraintVertical_bias="0.796" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -131,7 +145,7 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:background="@drawable/button_dark_offwhite"
+                android:background="@drawable/button_dark_orange"
                 android:textColor="#fff"
                 android:text="@string/equal"
                 android:textSize="35sp"

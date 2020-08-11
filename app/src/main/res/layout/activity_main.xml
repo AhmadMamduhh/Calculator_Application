@@ -20,6 +20,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/nightModeBtn"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_baseline_nights_stay_24"
+                app:layout_constraintBottom_toTopOf="@+id/historyScrollView"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClick="goToNightMode"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.641" />
+
             <HorizontalScrollView
                 android:id="@+id/historyScrollView"
                 android:layout_width="match_parent"
@@ -30,16 +43,16 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.723">
+                app:layout_constraintVertical_bias="0.653">
 
                 <TextView
                     android:id="@+id/historyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:scrollbars="horizontal"
                     android:lines="1"
                     android:padding="3dp"
+                    android:scrollbars="horizontal"
                     android:textColor="#AA3C3C3C"
                     android:textSize="20sp"
                     tools:text="dummy text" />
@@ -49,17 +62,17 @@
                 android:id="@+id/resultText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:lines="1"
                 android:text="@string/zero"
                 android:textAlignment="textEnd"
                 android:textColor="#000"
-                android:textSize="45sp"
-                android:lines="1"
+                android:textSize="42sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.728" />
+                app:layout_constraintVertical_bias="0.796" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

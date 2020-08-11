@@ -21,39 +21,16 @@ import com.ahmedmamdouh.calculatorapplication.ResultsController.resultsTextView
 import com.ahmedmamdouh.calculatorapplication.ResultsController.scrollView
 import com.ahmedmamdouh.calculatorapplication.ResultsController.secondNumber
 import com.ahmedmamdouh.calculatorapplication.ResultsController.setResultsText
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.cBtn
-import kotlinx.android.synthetic.main.activity_main.ceBtn
-import kotlinx.android.synthetic.main.activity_main.decimalBtn
-import kotlinx.android.synthetic.main.activity_main.divisonBtn
-import kotlinx.android.synthetic.main.activity_main.eightBtn
-import kotlinx.android.synthetic.main.activity_main.equalsBtn
-import kotlinx.android.synthetic.main.activity_main.fiveBtn
-import kotlinx.android.synthetic.main.activity_main.fourBtn
-import kotlinx.android.synthetic.main.activity_main.historyText
-import kotlinx.android.synthetic.main.activity_main.minusBtn
-import kotlinx.android.synthetic.main.activity_main.nineBtn
-import kotlinx.android.synthetic.main.activity_main.oneBtn
-import kotlinx.android.synthetic.main.activity_main.plusBtn
-import kotlinx.android.synthetic.main.activity_main.posNegBtn
-import kotlinx.android.synthetic.main.activity_main.removeBtn
-import kotlinx.android.synthetic.main.activity_main.resultText
-import kotlinx.android.synthetic.main.activity_main.sevenBtn
-import kotlinx.android.synthetic.main.activity_main.sixBtn
-import kotlinx.android.synthetic.main.activity_main.threeBtn
-import kotlinx.android.synthetic.main.activity_main.timesBtn
-import kotlinx.android.synthetic.main.activity_main.twoBtn
-import kotlinx.android.synthetic.main.activity_main.zeroBtn
+import kotlinx.android.synthetic.main.activity_main_dark.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivityDark: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_main_dark)
 
         // A global TextView object which controls the results that display on the screen
         resultsTextView = resultText
@@ -381,18 +358,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * This function is responsible for switching the layout from day mode to night mode
-     * @param view : Button view which switches the layout to night mode once clicked
+     * This function is responsible for switching the layout from night mode to day mode
+     * @param view : Button view which switches the layout to day mode once clicked
      */
-    fun goToNightMode(view: View) {
-        var darkActivityIntent = Intent(context, MainActivityDark::class.java)
-        darkActivityIntent.putExtra("history text", historyTextView.text.toString())
-        darkActivityIntent.putExtra("result text", resultsTextView.text.toString())
-        darkActivityIntent.putExtra("operation", operation)
-        darkActivityIntent.putExtra("operation code", operationCode)
-        darkActivityIntent.putExtra("division by zero", divisionByZeroFlag)
-        darkActivityIntent.putExtra("first number", firstNumber)
-        startActivity(darkActivityIntent)
+    fun goToDayMode(view: View) {
+        var dayActivityIntent = Intent(context, MainActivity::class.java)
+        dayActivityIntent.putExtra("history text", historyTextView.text.toString())
+        dayActivityIntent.putExtra("result text", resultsTextView.text.toString())
+        dayActivityIntent.putExtra("operation", operation)
+        dayActivityIntent.putExtra("operation code", operationCode)
+        dayActivityIntent.putExtra("division by zero", divisionByZeroFlag)
+        dayActivityIntent.putExtra("first number", firstNumber)
+        startActivity(dayActivityIntent)
         finish()
     }
 

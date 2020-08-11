@@ -365,13 +365,13 @@ class MainActivity : AppCompatActivity() {
                     operationCode = -1
                     resultsTextView.text = "0"
                     historyTextView.text = ""
-                    if (divisionByZeroFlag) resultsTextView.textSize = 60f
+                    if (divisionByZeroFlag) resultsTextView.textSize = 42f
                 }
 
                 R.id.ceBtn -> {
                     resultsTextView.text = "0"
                     if (operation) operation = false
-                    if (divisionByZeroFlag) resultsTextView.textSize = 60f
+                    if (divisionByZeroFlag) resultsTextView.textSize = 42f
 
                 }
             }

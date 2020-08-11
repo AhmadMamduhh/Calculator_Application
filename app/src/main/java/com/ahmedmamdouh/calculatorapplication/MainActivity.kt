@@ -20,7 +20,6 @@ import com.ahmedmamdouh.calculatorapplication.ResultsController.operationCode
 import com.ahmedmamdouh.calculatorapplication.ResultsController.resultsTextView
 import com.ahmedmamdouh.calculatorapplication.ResultsController.scrollView
 import com.ahmedmamdouh.calculatorapplication.ResultsController.secondNumber
-import com.ahmedmamdouh.calculatorapplication.ResultsController.setResultsText
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.cBtn
 import kotlinx.android.synthetic.main.activity_main.ceBtn
@@ -195,15 +194,15 @@ class MainActivity : AppCompatActivity() {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber + "
                         operation = true
+                        operationCode = 1
 
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} + "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 1
                     }
-                    operationCode = 1
-
                 }
 
                 "-" -> {
@@ -214,13 +213,14 @@ class MainActivity : AppCompatActivity() {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber - "
                         operation = true
+                        operationCode = 2
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} - "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 2
                     }
-                    operationCode = 2
                 }
 
                 "x" -> {
@@ -231,13 +231,14 @@ class MainActivity : AppCompatActivity() {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber x "
                         operation = true
+                        operationCode = 3
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} x "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 3
                     }
-                    operationCode = 3
                 }
 
                 "/" -> {
@@ -248,13 +249,15 @@ class MainActivity : AppCompatActivity() {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber / "
                         operation = true
+                        operationCode = 4
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} / "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 4
                     }
-                    operationCode = 4
+
                 }
 
                 "=" -> {
@@ -292,6 +295,7 @@ class MainActivity : AppCompatActivity() {
                             .substring(1, resultsTextView.text.toString().length)
                     else
                         resultsTextView.text = "-" + resultsTextView.text.toString()
+                    operation = false
                 }
             }
 

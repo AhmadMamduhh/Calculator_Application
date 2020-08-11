@@ -81,11 +81,4 @@ object ResultsController {
         return formattedString
     }
 
-    fun setResultsText(results: String) {
-
-    }
-
-    fun appendToResultsText(char: String) {
-
-    }
 }

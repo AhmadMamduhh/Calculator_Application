@@ -20,7 +20,6 @@ import com.ahmedmamdouh.calculatorapplication.ResultsController.operationCode
 import com.ahmedmamdouh.calculatorapplication.ResultsController.resultsTextView
 import com.ahmedmamdouh.calculatorapplication.ResultsController.scrollView
 import com.ahmedmamdouh.calculatorapplication.ResultsController.secondNumber
-import com.ahmedmamdouh.calculatorapplication.ResultsController.setResultsText
 import kotlinx.android.synthetic.main.activity_main_dark.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -277,6 +276,8 @@ class MainActivityDark: AppCompatActivity() {
                             .substring(1, resultsTextView.text.toString().length)
                     else
                         resultsTextView.text = "-" + resultsTextView.text.toString()
+
+                    operation = false
                 }
             }
 

@@ -25,13 +25,13 @@
                 android:layout_width="43dp"
                 android:layout_height="36dp"
                 android:background="@drawable/ic_baseline_nights_stay_24"
-                app:layout_constraintBottom_toTopOf="@+id/historyScrollView"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:onClick="goToNightMode"
-                app:layout_constraintHorizontal_bias="0.043"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.641" />
+                app:layout_constraintBottom_toBottomOf="@+id/resultText"
+                app:layout_constraintEnd_toEndOf="@+id/resultText"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="@+id/resultText"
+                app:layout_constraintTop_toTopOf="@+id/resultText"
+                app:layout_constraintVertical_bias="1.0" />
 
             <HorizontalScrollView
                 android:id="@+id/historyScrollView"
@@ -69,10 +69,10 @@
                 android:textSize="42sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.796" />
+                app:layout_constraintVertical_bias="0.8" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

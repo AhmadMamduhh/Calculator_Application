@@ -8,7 +8,7 @@
                 android:type="linear" />
 
             <corners android:radius="16dp"/>
-            <stroke android:color="#5A5A5A" android:width="0dp"/>
+            <stroke android:color="#E6DADA" android:width="0dp"/>
         </shape>
     </item>
 </selector>

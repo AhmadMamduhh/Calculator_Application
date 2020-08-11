@@ -5,33 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#000">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#fff"
         app:cardCornerRadius="5dp"
         app:cardElevation="3dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#000">
 
             <Button
-                android:id="@+id/nightModeBtn"
+                android:id="@+id/dayModeBtn"
                 android:layout_width="43dp"
                 android:layout_height="36dp"
-                android:background="@drawable/ic_baseline_nights_stay_24"
-                app:layout_constraintBottom_toTopOf="@+id/historyScrollView"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:onClick="goToNightMode"
-                app:layout_constraintHorizontal_bias="0.043"
+                android:background="@drawable/ic_baseline_wb_sunny_24"
+                android:onClick="goToDayMode"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/resultText"
+                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.641" />
+                app:layout_constraintTop_toTopOf="@+id/resultText"
+                tools:ignore="OnClick" />
 
             <HorizontalScrollView
                 android:id="@+id/historyScrollView"
@@ -50,30 +51,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="end"
+                    android:scrollbars="horizontal"
                     android:lines="1"
                     android:padding="3dp"
-                    android:scrollbars="horizontal"
-                    android:textColor="#AA3C3C3C"
+                    android:textColor="#AAAFABAB"
                     android:textSize="20sp"
                     tools:text="dummy text" />
             </HorizontalScrollView>
-
             <TextView
                 android:id="@+id/resultText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="1"
+                android:layout_marginTop="109dp"
                 android:text="@string/zero"
                 android:textAlignment="textEnd"
-                android:textColor="#000"
+                android:textColor="#FFFFFF"
                 android:textSize="42sp"
+                android:lines="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.796" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,11 +86,11 @@
         android:layout_height="0dp"
         android:layout_marginTop="3dp"
         android:layout_weight="2"
-        android:background="#fff"
+        android:background="#000"
         android:orientation="vertical"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -104,49 +104,49 @@
             <Button
                 android:id="@+id/ceBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_blue"
+                android:background="@drawable/button_dark_grey"
+                android:textColor="#fff"
                 android:text="@string/CE"
-                android:textColor="#02ADFB"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_blue"
+                android:background="@drawable/button_dark_grey"
+                android:textColor="#fff"
                 android:text="@string/C"
-                android:textColor="#02ADFB"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/removeBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_blue"
+                android:background="@drawable/button_dark_grey"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:src="@drawable/ic_baseline_backspace_24_blue"
+                android:src="@drawable/ic_baseline_backspace_24_white"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/equalsBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_pink"
+                android:background="@drawable/button_dark_orange"
+                android:textColor="#fff"
                 android:text="@string/equal"
-                android:textColor="#9062E1"
                 android:textSize="35sp"
                 android:textStyle="bold" />
 
@@ -162,10 +162,11 @@
             <Button
                 android:id="@+id/sevenBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/seven"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -173,10 +174,11 @@
             <Button
                 android:id="@+id/eightBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/eight"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -184,10 +186,11 @@
             <Button
                 android:id="@+id/nineBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/nine"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -195,12 +198,12 @@
             <Button
                 android:id="@+id/plusBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_blue"
+                android:background="@drawable/button_dark_grey"
+                android:textColor="#fff"
                 android:text="@string/plus"
-                android:textColor="#02ADFB"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -210,15 +213,17 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/fourBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/four"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -226,10 +231,11 @@
             <Button
                 android:id="@+id/fiveBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/five"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -237,10 +243,11 @@
             <Button
                 android:id="@+id/sixBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/six"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -248,12 +255,12 @@
             <Button
                 android:id="@+id/minusBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_blue"
+                android:background="@drawable/button_dark_grey"
+                android:textColor="#fff"
                 android:text="@string/minus"
-                android:textColor="#02ADFB"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -269,10 +276,11 @@
             <Button
                 android:id="@+id/oneBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/one"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -280,10 +288,11 @@
             <Button
                 android:id="@+id/twoBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/two"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -291,10 +300,11 @@
             <Button
                 android:id="@+id/threeBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/three"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -302,13 +312,13 @@
             <Button
                 android:id="@+id/timesBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_blue"
+                android:background="@drawable/button_dark_grey"
+                android:textColor="#fff"
                 android:text="@string/times"
                 android:textAllCaps="false"
-                android:textColor="#02ADFB"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -324,10 +334,11 @@
             <Button
                 android:id="@+id/posNegBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/posOrNeg"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -335,10 +346,11 @@
             <Button
                 android:id="@+id/zeroBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/zero"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -346,10 +358,11 @@
             <Button
                 android:id="@+id/decimalBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_white"
+                android:background="@drawable/button_dark_black"
+                android:textColor="#fff"
                 android:text="@string/decimal"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -357,12 +370,12 @@
             <Button
                 android:id="@+id/divisonBtn"
                 android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_light_blue"
+                android:background="@drawable/button_dark_grey"
+                android:textColor="#fff"
                 android:text="@string/divide"
-                android:textColor="#02ADFB"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 

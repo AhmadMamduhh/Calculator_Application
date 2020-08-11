@@ -172,14 +172,16 @@ class MainActivityDark: AppCompatActivity() {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber + "
                         operation = true
+                        operationCode = 1
 
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} + "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 1
                     }
-                    operationCode = 1
+
 
                 }
 
@@ -191,13 +193,15 @@ class MainActivityDark: AppCompatActivity() {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber - "
                         operation = true
+                        operationCode = 2
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} - "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 2
                     }
-                    operationCode = 2
+
                 }
 
                 "x" -> {
@@ -207,14 +211,16 @@ class MainActivityDark: AppCompatActivity() {
                     if (firstNumber == null) {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber x "
+                        operationCode = 3
                         operation = true
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} x "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 3
                     }
-                    operationCode = 3
+
                 }
 
                 "/" -> {
@@ -225,13 +231,15 @@ class MainActivityDark: AppCompatActivity() {
                         firstNumber = resultsTextView.text.toString()
                         historyTextView.text = "$firstNumber / "
                         operation = true
+                        operationCode = 4
                     } else if (!operation) {
                         historyTextView.text = "${historyTextView.text}${resultsTextView.text} / "
                         adjustTextView()
                         updateResults()
                         operation = true
+                        operationCode = 4
                     }
-                    operationCode = 4
+
                 }
 
                 "=" -> {
